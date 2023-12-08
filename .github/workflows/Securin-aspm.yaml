@@ -13,14 +13,14 @@ jobs:
     env:
       APP_ID: 6e1783a7f9247de94a2a6a7fc41e63d696998bab504ffbfed3fb9a938a41b8c5
       BRANCH_NAME: main
-      SCAN_ID: 30a1f095cc6d7ff02f4ba4cac7e88b6163afca18057bfdc41e6d7413a9ede52d
-      REQ_URL_MAP: "${{toJSON('{\"SL_RESULT_API_HOST\":\" https://f77c-103-163-45-49.ngrok.io/resultapi\"\
+      SCAN_ID: f291e590426a59d22d9ec9b1b64141fed07221a8cfb016a4d18b1b07529fb5fe
+      REQ_URL_MAP: "${{toJSON('{\"SL_RESULT_API_HOST\":\"https://f77c-103-163-45-49.ngrok.io/resultapi\"\
         ,\"SL_RESULTPARSER_API_HOST\":\"https://1263-103-163-45-49.ngrok.io/resultparserapi\"\
         }')}}"
     steps:
     - name: Retrieve Token Info
       id: auth_token
-      run: "respJson=$(curl --location --request GET ' https://f77c-103-163-45-49.ngrok.io/resultapi/aws/ecr/token'\
+      run: "respJson=$(curl --location --request GET 'https://f77c-103-163-45-49.ngrok.io/resultapi/aws/ecr/token'\
         \  --header 'X-ASPM-Auth-Key: ${{secrets.ORG_API_KEY}}'  --data-raw ' ' )\
         \ \necho \"authTokenJson=$respJson\" >> $GITHUB_OUTPUT"
     - uses: actions/checkout@v3
